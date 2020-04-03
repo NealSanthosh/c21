@@ -1,6 +1,5 @@
 var sun;
 var size;
-var l;
 var r;
 
 var startx_Mercury;
@@ -61,11 +60,10 @@ var Neptune;
 
 function setup() {
   createCanvas(750,750);
-  sun = createSprite(350, 350, 20, 20);
+  // sun = createSprite(350, 350, 20, 20);
 
-   size = 1;
-  // l = 0;
-   l = 5;
+   size = 10;
+   r = 10
 
   startx_Mercury=350;
   starty_Mercury=350; 
@@ -136,15 +134,14 @@ function setup() {
 function draw() {
   background(0,0,0);  
 
-  // if(frameCount % 30 === 0){
-  //   sun.scale = 2;
-    
-  // }
+  sun = ellipse(350, 350, r*2, r*2);
+
+  if(frameCount % 4 === 0){
+    r = size;
+    size = size + 0.5;
+  }
 
   turn();
-
- grow();
- sun.scale = size;  
 
   drawSprites();
 }
@@ -189,9 +186,5 @@ function turn() {
   Neptune.x=startx_Neptune+radius_Neptune*Math.cos(angle_Neptune * Math.PI/180);
   Neptune.y=starty_Neptune+radius_Neptune*Math.sin(angle_Neptune * Math.PI/180);
   Neptune.rotation=60+angle_Neptune;
-
-  if(frameCount % 30 === 0){
-    size = size + 0.5;
-  }
 
 }
